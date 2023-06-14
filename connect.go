@@ -9,8 +9,8 @@ import (
 	"github.com/joho/godotenv"
 )
 
-func ConnectDB() *sql.DB {
-	db, err := sql.Open("mysql", "")
+func ConnectDB(url string) *sql.DB {
+	db, err := sql.Open("mysql", url)
 	if err != nil {
 		panic(err.Error())
 	}
