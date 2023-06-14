@@ -1,4 +1,4 @@
-package sql
+package sql_connection
 
 import (
 	"database/sql"
