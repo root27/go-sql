@@ -9,12 +9,15 @@ import (
 	"github.com/joho/godotenv"
 )
 
-func ConnectDB(url string) *sql.DB {
+func ConnectDB(envName string) (*sql.DB, error) {
+
+	url := LoadUri(envName)
+
 	db, err := sql.Open("mysql", url)
 	if err != nil {
 		panic(err.Error())
 	}
-	return db
+	return db, err
 }
 
 func LoadUri(url string) string {
