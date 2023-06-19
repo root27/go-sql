@@ -17,9 +17,12 @@ import (
 )
 
 func main() {
-    url := sql_connection.LoadUri("sql") // sql is the name in the .env file
+    
+    db,err := sql_connection.ConnectDB("sql") // sql is the name in the .env file
 
-	db := sql_connection.ConnectDB(url)
+    if err != nil {
+        fmt.Println(err)
+    }
 
 	defer db.Close()
 
