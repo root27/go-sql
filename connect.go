@@ -29,3 +29,22 @@ func LoadUri(url string) string {
 	return os.Getenv(url)
 
 }
+
+func CloseDB(db *sql.DB) {
+	db.Close()
+}
+
+func PingDB(db *sql.DB) {
+	err := db.Ping()
+	if err != nil {
+		panic(err.Error())
+	}
+}
+
+func GetTable(db *sql.DB, table string) (*sql.Rows, error) {
+	rows, err := db.Query("SELECT * FROM " + table)
+	if err != nil {
+		panic(err.Error())
+	}
+	return rows, err
+}
