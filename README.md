@@ -24,7 +24,16 @@ func main() {
         fmt.Println(err)
     }
 
-	defer db.Close()
+	defer sql_connection.CloseDB(db) //Close db
+
+
+    //Ping db
+
+    sql_connection.PingDB(db)
+
+    
+
+   
 
 	fmt.Println("Connected to DB")
 }
